@@ -1,8 +1,9 @@
+import Hero from "@/components/home-page/Hero";
 
 const HomePage = () => {
   return (
     <main>
-      <h2>This is home page of my app</h2>
+      <Hero />
     </main>
   );
 };
