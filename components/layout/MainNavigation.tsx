@@ -1,17 +1,20 @@
 import Link from "next/link";
 import React from "react";
+import Logo from "./Logo";
 
 const MainNavigation = () => {
   return (
     <header>
-      <Logo />
+      <Link href="/" passHref>
+        <Logo />
+      </Link>
       <nav>
         <ul>
           <li>
-            <Link href="www.google.com">google</Link>
+            <Link href="/posts">Posts</Link>
           </li>
           <li>
-            <Link href="/posts">Posts</Link>
+            <Link href="/contact">Contact</Link>
           </li>
         </ul>
       </nav>
