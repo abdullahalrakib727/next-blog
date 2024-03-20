@@ -1,7 +1,8 @@
+import { PostsProps } from "../home-page/FeaturedPosts";
 import PostItem from "./PostItem";
-import classes from "./post-grid.module.css";
+import classes from "./posts-grid.module.css";
 
-const PostGrid = ({ posts }) => {
+const PostGrid = ({ posts }: PostsProps) => {
   return (
     <ul className={classes.grid}>
       {posts.map((post) => (
