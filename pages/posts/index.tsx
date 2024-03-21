@@ -1,11 +1,8 @@
-import React from 'react';
+import AllPosts from "@/components/posts/AllPosts";
+import { DUMMY_POST } from "..";
 
 const AllPostPage = () => {
-    return (
-        <section>
-            All posts
-        </section>
-    );
+  return <AllPosts posts={DUMMY_POST} />;
 };
 
 export default AllPostPage;
