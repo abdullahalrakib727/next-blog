@@ -1,7 +1,8 @@
 import FeaturedPosts from "@/components/home-page/FeaturedPosts";
 import Hero from "@/components/home-page/Hero";
+import { getAllPosts, getFeaturedPosts } from "@/lib/posts-util";
+import { GetStaticProps } from "next";
 import Head from "next/head";
-
 
 export const DUMMY_POST = [
   {
@@ -30,9 +31,17 @@ export const DUMMY_POST = [
   },
 ];
 
-const HomePage = () => {
-  
+export type PostsProps = {
+  posts: {
+    slug: string;
+    title: string;
+    image: string;
+    excerpt: string;
+    date: string;
+  }[];
+};
 
+const HomePage = ({ posts }: PostsProps) => {
   return (
     <main>
       <Head>
@@ -44,9 +53,19 @@ const HomePage = () => {
         <title>Next Blog</title>
       </Head>
       <Hero />
-      <FeaturedPosts posts={DUMMY_POST} />
+      <FeaturedPosts posts={posts} />
     </main>
   );
 };
 
 export default HomePage;
+
+export const getStaticProps: GetStaticProps = (ctx) => {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
+};

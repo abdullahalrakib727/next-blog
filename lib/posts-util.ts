@@ -40,10 +40,12 @@ export const getAllPosts = () => {
   return allPosts;
 };
 
-export const getFeaturePosts = () => {
+export const getFeaturedPosts = () => {
   const allPosts = getAllPosts();
 
   const featurePosts = allPosts.filter((post) => post.isFeatured);
 
   return featurePosts;
 };
+
+
