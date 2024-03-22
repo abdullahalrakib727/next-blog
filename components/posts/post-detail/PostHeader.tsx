@@ -1,7 +1,12 @@
 import Image from "next/image";
 import classes from "./post-header.module.css";
 
-const PostHeader = ({ title, image }) => {
+type PostHeaderProps = {
+  title: string;
+  image: string;
+};
+
+const PostHeader = ({ title, image }: PostHeaderProps) => {
   return (
     <header className={classes.header}>
       <h1>{title}</h1>
