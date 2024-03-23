@@ -10,12 +10,24 @@ const PostContent = ({ post }: PostDetailProps) => {
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} />
-      <Markdown components={{
-        img: ({ node, ...props }) => {
-          const { src, ...otherProps } = props;
-          return <Image src={src || ""} {...otherProps} layout="responsive" width={400} height={200} alt="next-js-img" />;
-        },
-      }}>{post.content}</Markdown>
+      <Markdown
+        components={{
+          img: ({ node, ...props }) => {
+            const { src, alt } = props;
+            return (
+              <Image
+                src={src || ""}
+                layout="responsive"
+                width={400}
+                height={200}
+                alt={alt || ""}
+              />
+            );
+          },
+        }}
+      >
+        {post.content}
+      </Markdown>
     </article>
   );
 };
