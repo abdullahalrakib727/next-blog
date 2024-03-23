@@ -1,14 +1,21 @@
 import { PostDetailProps } from "@/pages/posts/[slug]";
 import PostHeader from "./PostHeader";
 import classes from "./post-content.module.css";
-import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
+import Image from "next/image";
 
 const PostContent = ({ post }: PostDetailProps) => {
   const imagePath = `/images/posts/${post.slug}/${post.image}`;
+
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} />
-      <ReactMarkdown>{post.content}</ReactMarkdown>
+      <Markdown components={{
+        img: ({ node, ...props }) => {
+          const { src, ...otherProps } = props;
+          return <Image src={src || ""} {...otherProps} layout="responsive" width={400} height={200} alt="next-js-img" />;
+        },
+      }}>{post.content}</Markdown>
     </article>
   );
 };
