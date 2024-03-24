@@ -19,7 +19,6 @@ const ContactForm = () => {
           <label htmlFor="message">Your Message</label>
           <textarea id="message" rows={5} required></textarea>
         </div>
-
         <div className={classes.actions}>
           <button>Send Message</button>
         </div>
