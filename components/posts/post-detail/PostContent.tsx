@@ -4,11 +4,8 @@ import classes from "./post-content.module.css";
 import Markdown from "react-markdown";
 import Image from "next/image";
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-
-
-
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const PostContent = ({ post }: PostDetailProps) => {
   const imagePath = `/images/posts/${post.slug}/${post.image}`;
@@ -29,14 +26,21 @@ const PostContent = ({ post }: PostDetailProps) => {
                 alt={alt || ""}
               />
             );
-          
           },
-          code: ({node, children, className}) => {
-            const childrenArray = Array.isArray(children) ? children : [children];
-            const match = /language-(\w+)/.exec(className || '');
-            return <SyntaxHighlighter style={atomDark} language={match ? match[1] : ''}>{childrenArray}</SyntaxHighlighter>
-          }
-
+          code: ({ node, children, className }) => {
+            const childrenArray = Array.isArray(children)
+              ? children
+              : [children];
+            const match = /language-(\w+)/.exec(className || "");
+            return (
+              <SyntaxHighlighter
+                style={nightOwl}
+                language={match ? match[1] : ""}
+              >
+                {childrenArray}
+              </SyntaxHighlighter>
+            );
+          },
         }}
       >
         {post.content}
