@@ -18,8 +18,8 @@ const PostContent = ({ post }: PostDetailProps) => {
               <Image
                 src={src || ""}
                 layout="responsive"
-                width={400}
-                height={200}
+                width={600}
+                height={300}
                 alt={alt || ""}
               />
             );
