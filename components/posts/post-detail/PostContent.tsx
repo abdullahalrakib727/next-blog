@@ -31,11 +31,11 @@ const PostContent = ({ post }: PostDetailProps) => {
             const childrenArray = Array.isArray(children)
               ? children
               : [children];
-            const match = /language-(\w+)/.exec(className || "");
+            const codeLanguage = className?.split("-")[1];
             return (
               <SyntaxHighlighter
                 style={nightOwl}
-                language={match ? match[1] : ""}
+                language={codeLanguage ? codeLanguage : ""}
               >
                 {childrenArray}
               </SyntaxHighlighter>
