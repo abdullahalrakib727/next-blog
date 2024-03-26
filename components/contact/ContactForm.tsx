@@ -1,5 +1,7 @@
 import { FormEvent, useState } from "react";
 import classes from "./contact-form.module.css";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactForm = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -20,7 +22,32 @@ const ContactForm = () => {
         "Content-Type": "application/json",
       },
     });
-    console.log(response);
+    const data = await response.json();
+    if (!response.ok) {
+      toast.error("Failed sending message. Please try again!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    } else {
+      toast.success("Message Sent succefully!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
   };
 
   return (
@@ -63,6 +90,19 @@ const ContactForm = () => {
           <button>Send Message</button>
         </div>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
     </section>
   );
 };
