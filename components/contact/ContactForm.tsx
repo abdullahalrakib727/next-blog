@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import classes from "./contact-form.module.css";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -35,6 +35,10 @@ const ContactForm = () => {
         theme: "light",
         transition: Bounce,
       });
+
+      setEnteredEmail("");
+      setEnteredName("");
+      setEnteredMessage("");
     } else {
       toast.success("Message Sent succefully!", {
         position: "top-center",
