@@ -23,6 +23,7 @@ const ContactForm = () => {
       },
     });
     const data = await response.json();
+    console.log(data);
     if (!response.ok) {
       toast.error("Failed sending message. Please try again!", {
         position: "top-center",
