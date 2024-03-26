@@ -50,6 +50,7 @@ const HomePage = ({ posts }: PostsProps) => {
           content="I am Rakib. I blog about web development - especially frontend frameworks like React"
           key={"home-page-meta"}
         />
+        <meta name="author" content="Abdullah Al Rakib" />
         <title>Next Blog</title>
       </Head>
       <Hero />

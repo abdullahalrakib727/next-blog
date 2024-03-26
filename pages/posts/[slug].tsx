@@ -1,6 +1,7 @@
 import PostContent from "@/components/posts/post-detail/PostContent";
 import { getPostData, getPostsFiles } from "@/lib/posts-util";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 
 export type PostDetailProps = {
   post: {
@@ -13,7 +14,15 @@ export type PostDetailProps = {
 };
 
 const PostDetailsPage = ({ post }: PostDetailProps) => {
-  return <PostContent post={post} />;
+  return (
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.content} />
+      </Head>
+      <PostContent post={post} />
+    </>
+  );
 };
 
 export default PostDetailsPage;
