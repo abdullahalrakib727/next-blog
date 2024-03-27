@@ -4,8 +4,16 @@ import classes from "./post-content.module.css";
 import Markdown from "react-markdown";
 import Image from "next/image";
 
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import nightOwl from "react-syntax-highlighter/dist/cjs/styles/prism/night-owl";
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import ts from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript';
+
+SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('css', css);
+SyntaxHighlighter.registerLanguage('ts', ts);
+
 
 const PostContent = ({ post }: PostDetailProps) => {
   const imagePath = `/images/posts/${post.slug}/${post.image}`;
